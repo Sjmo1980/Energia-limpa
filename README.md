@@ -11,3 +11,5 @@ Talvez o que passa pela minha cabeça, não seja algo de uma pessoa normal, é t
 Bom, mas isso não me traz algo ruim. 
 
 Transição de energia elétrica. 
+
+https://www.alemdaenergia.engie.com.br/transicao-energetica-muito-alem-da-energia/
