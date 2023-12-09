@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transformador</title>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">-->
+    <style>
+        /* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  src: url(pw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+botão,hr,input {
+            overflow: visible
+        }
+
+        audio,canvas,progress,video {
+            display: inline-block
+        }
+
+        progress,sub,sup {
+            vertical-align: baseline
+        }
+
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            margin: 0
+        }
+
+        menu,article,aside,details,footer,header,nav,section {
+            display: block
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: .67em 0
+        }
+
+        figcaption,figure,main {
+            display: block
+        }
+
+        figure {
+            margin: 1em 40px
+        }
+
+        hr {
+            box-sizing: content-box;
+            height: 0
+        }
+
+        code,kbd ,pre,samp {
+            font-family: monospace,monospace;
+            font-size: 1em
+        }
+
+        a {
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects
+        }
+
+        a:active,a:hover {
+            outline-width: 0
+        }
+
+        abbr[título] {
+            border-bottom: none;
+            text-decoration: underline;
+            text-decoration: underline dotted
+        }
+
+        b,strong {
+            font-weight: bolder
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        marca {
+            cor de fundo: #ff0;
+            color: #000
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        audio:not([controles]) {
+            display: none;
+            height: 0
+        }
+
+        img {
+            border-style: none
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        button,input,optgroup,select,textarea {
+            font-family: sans-serif;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0
+        }
+
+        botão,botão {}de entrada,selecione {
+            text-transform: none
+        }
+
+        [type=submit], [type= reset],botão,html [type=button] {
+            -webkit-appearance: button
+        }
+
+        [type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type= enviar]::-moz-focus-inner,button::-moz-focus-inner {
+            border-style: none;
+            padding: 0
+        }
+
+        [type=button]:-moz-focusring,[type=reset]:-moz -focusring,[type=submit]:-moz-focusring,button:-moz-focusring {
+            outline: ButtonText pontilhado 1px
+        }
+
+        fieldset {
+            borda: 1px prata sólida;
+            margem: 0 2px;
+            preenchimento: .35em .625em .75em
+        }
+
+        legenda {
+            box-sizing: border-box;
+            color: inherit;
+            display: table;
+            max-width: 100%;
+            padding: 0;
+            white-space: normal
+        }
+
+        progresso {}textarea {
+            overflow: auto
+        }
+
+        [type=checkbox],[ type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        [type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button {
+            altura: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        [type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search -decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        resumo {
+            display: list-item
+        }
+
+        [oculto],modelo {
+            display: none
+        }
+
+        /*# sourceMappingURL=normalize.min.css.map */
+
+
+
+
+
+
+        body {
+            background: black;
+            font-family: "Orbitron", sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .container .interface {
+            color: #ffffff;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            animation: beginAnim 0.8s 1 ease;
+        }
+        .container .interface div {
+            width: 150px;
+            border-radius: 10%;
+            border: 3px solid #33ABB9;
+            box-shadow: 1px 1px 10px #33ABB9;
+            background: #184344;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-ring {
+            width: 80vw;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: calc(50% - 45vh);
+            left: calc(50% - 40vw);
+            transition: all 5s ease;
+            transform: rotateX(0deg);
+            will-change: transform;
+            perspective: 800px;
+            transform-style: preserve-3d;
+        }
+        .container-ring .ringMain {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .container-ring .ringMain circle {
+            fill: none;
+            stroke-linecap: round;
+            transform-origin: 50% 50%;
+            will-change: transform;
+            stroke: #33ABB9;
+        }
+        .container-ring .ringMain .c1 {
+            stroke-width: 0.1;
+        }
+        .container-ring .ringMain .c2 {
+            stroke-width: 0.1;
+            stroke-dasharray: 5, 10;
+            animation: rotate-c2 10s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .ringMain [class^=c3] {
+            stroke-width: 1;
+            transform: rotate(-90deg);
+            animation: progress 10s ease-out forwards;
+        }
+        .container-ring .ringMain .c3-1-red {
+            stroke: #BA2433;
+            stroke-dasharray: 38, 100;
+        }
+        .container-ring .ringMain .c3-2 {
+            stroke-dasharray: 46, 100;
+        }
+        .container-ring .ringMain .c3-3 {
+            stroke-dasharray: 54, 100;
+        }
+        .container-ring .ringMain .c4 {
+            stroke-width: 0.5;
+            animation: rotate-c4 10s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .ringMain .c5 {
+            stroke-width: 0.7;
+            stroke-dasharray: 40;
+            animation: rotate-c5 10s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .ringMain .c6 {
+            stroke-width: 0.7;
+            stroke-dasharray: 10;
+            animation: rotate-c6 10s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .ringMain .c7 {
+            stroke-width: 0.7;
+            stroke-dasharray: 0.3;
+            animation: rotate-c7 10s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        
+        
+        
+        
+        
+        
+        .container-ring .ringMain .c8 {
+            stroke-width: 8;
+            stroke-dasharray: 100, 100;
+            animation: rotate-c8 10s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        
+        
+        
+        
+        
+        
+        .container-ring .ringMain .c9 {
+            stroke-width: 2;
+            stroke-dasharray: 2;
+            animation: rotate-c9 1s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .ringMain .c10 {
+            stroke-width: 0.4;
+            stroke-dasharray: 80, 100;
+            animation: rotate-c10 1s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .ringMain .c11 {
+            stroke-width: 1;
+            stroke-dasharray: 80, 100;
+            animation: rotate-c11 1s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .container-ring .cpu {
+            position: absolute;
+            color: #33ABB9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-out;
+        }
+        .container-ring .cpu p {
+            font-size: 0.8vw;
+            margin: 0;
+        }
+        .container-ring .rotate-skew {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            will-change: transform;
+            z-index: -1;
+            transition: transform 1s ease-out;
+        }
+        .container-ring .rotate-skew .skew-square {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            will-change: transform;
+            animation: speed 2s infinite linear;
+        }
+        .container-ring .rotate-skew .skew-square [class^=square] {
+            position: absolute;
+            background: #33ABB9;
+            transform-origin: 50% 50%;
+            width: 25px;
+            height: 15px;
+            box-shadow: 1px 1px 10px #33ABB9;
+            transition: all 1s ease-in;
+            will-change: transform;
+        }
+        .container-ring .rotate-skew .skew-square .square-1 {
+            transform: rotate(0deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-2 {
+            transform: rotate(20deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-3 {
+            transform: rotate(40deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-4 {
+            transform: rotate(60deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-5 {
+            transform: rotate(80deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-6 {
+            transform: rotate(100deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-7 {
+            transform: rotate(120deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-8 {
+            transform: rotate(140deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-9 {
+            transform: rotate(160deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-10 {
+            transform: rotate(180deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-11 {
+            transform: rotate(200deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-12 {
+            transform: rotate(220deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-13 {
+            transform: rotate(240deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-14 {
+            transform: rotate(260deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-15 {
+            transform: rotate(280deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-16 {
+            transform: rotate(300deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-17 {
+            transform: rotate(320deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rotate-skew .skew-square .square-18 {
+            transform: rotate(340deg) translateY(-90px) skewX(-50deg);
+        }
+        .container-ring .rectangle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            will-change: transform;
+            transition: transform 1s ease-out;
+        }
+        .container-ring .rectangle [class^=rectangle] {
+            position: absolute;
+            background: #184344;
+            border: 3px solid #33ABB9;
+            border-radius: 20%;
+            width: 45px;
+            height: 25px;
+        }
+        .container-ring .rectangle .rectangle-2 {
+            transform: rotate(15deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-3 {
+            transform: rotate(30deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-4 {
+            transform: rotate(45deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-5 {
+            transform: rotate(60deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-6 {
+            transform: rotate(75deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-7 {
+            transform: rotate(90deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-8 {
+            transform: rotate(105deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-9 {
+            transform: rotate(120deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-10 {
+            transform: rotate(135deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-11 {
+            transform: rotate(150deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-12 {
+            transform: rotate(165deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-13 {
+            transform: rotate(180deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-14 {
+            transform: rotate(195deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-15 {
+            transform: rotate(210deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-16 {
+            transform: rotate(225deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-17 {
+            transform: rotate(240deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-18 {
+            transform: rotate(255deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-19 {
+            transform: rotate(270deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-20 {
+            transform: rotate(285deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-21 {
+            transform: rotate(300deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-22 {
+            transform: rotate(315deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-23 {
+            transform: rotate(330deg) translateY(-140px);
+        }
+        .container-ring .rectangle .rectangle-24 {
+            transform: rotate(345deg) translateY(-140px);
+        }
+        .container-ring .symbol {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s ease-out;
+        }
+        .container-ring .symbol [class^=symbol] {
+            position: absolute;
+            transform-origin: 100% 50%;
+            width: 30px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+        .container-ring .symbol [class^=symbol] p {
+            filter: drop-shadow(0.1px 0.1px 1px #ffffff);
+        }
+        .container-ring .symbol .symbol-1 {
+            transform: rotate(0deg) translateY(-200px);
+        }
+        .container-ring .symbol .symbol-2 {
+            transform: rotate(45deg) translateY(-200px) rotate(-45deg);
+        }
+        .container-ring .symbol .symbol-3 {
+            transform: rotate(315deg) translateY(-200px) rotate(-315deg);
+        }
+        .container-ring .symbol .symbol-4 {
+            transform: rotate(135deg) translateY(-200px) rotate(-135deg);
+        }
+        .container-ring .symbol .symbol-5 {
+            transform: rotate(180deg) translateY(-200px) rotate(-180deg);
+        }
+        .container-ring .symbol .symbol-6 {
+            transform: rotate(225deg) translateY(-200px) rotate(-225deg);
+        }
+
+        /********************
+        /* CLASS ADD/REMOVE WITH JS
+*/
+        .beginAnim {
+            animation: beginAnim 0.2s ease 0s 1;
+        }
+
+        .rotate-container-ring {
+            transform: rotateX(10deg) rotateY(40deg) translateY(40px) translateX(-120px);
+        }
+
+        .cpu-3d {
+            transform: translateZ(420px);
+        }
+
+        .skew-square-3d {
+            transform: translateZ(350px);
+        }
+
+        .rectangle-3d {
+            transform: translateZ(250px);
+        }
+
+        .symbol-3d {
+            transform: translateZ(150px);
+        }
+
+        .skew-square-boost {
+            animation: changeColor 1s linear 2 forwards;
+        }
+
+        .skew-square-scale {
+            transform: translateZ(50px) scale(5);
+        }
+
+        .animation-container-ring {/*angulo da exibicao*/
+            transform: perspective(200px) rotateX(60deg) rotate(360deg);
+        }
+
+        .remove-button {
+            display: none !important;
+        }
+
+        /*********************************************************
+* KEYFRAMES
+**/
+@keyframes beginAnim {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+@keyframes speed {/*eixo cinetico*/
+            0% {
+                transform: rotate(-180deg);
+            }
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+@keyframes progress {
+            0% {
+                stroke-dasharray: 0 100;
+            }
+        }
+@keyframes changeColor {
+            0% {
+                background: #33ABB9;
+                box-shadow: 1px 1px 10px #33ABB9;
+            }
+            25% {
+                border-radius: 50%;
+            }
+            50% {
+                background: #E8823A;
+                box-shadow: 1px 1px 10px #E8823A;
+            }
+            100% {
+                background: #BA2433;
+                box-shadow: 1px 1px 10px #BA2433;
+            }
+        }
+@keyframes rotate-c2 {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            80% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+@keyframes rotate-c4 {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            80% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+@keyframes rotate-c5 {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            90% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+@keyframes rotate-c6 {
+            0% {
+                transform: rotate(-360deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            90% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+@keyframes rotate-c7 {
+             0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(36deg);
+            }
+            30% {
+                transform: rotate(108deg);
+            }
+            60% {
+                transform: rotate(216deg);
+            }
+            80% {
+                transform: rotate(288deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+			 80% {
+                transform: rotate(-288deg);
+            }
+			 60% {
+                transform: rotate(-216deg);
+            }
+			 30% {
+                transform: rotate(-108deg);
+            }
+			 10% {
+                transform: rotate(-36deg);
+            }
+			 0% {
+                transform: rotate(-0deg);
+            }
+        }
+		
+@keyframes rotate-c8 {/*rotor pen*/
+            0% {
+                transform: rotate(0deg);
+            }
+            
+            100% {
+                transform: rotate(360deg);
+            }
+            
+			90% {
+                transform: rotate(-314deg);
+            }
+            80% {
+                transform: rotate(-278deg);
+            }
+            70% {
+                transform: rotate(-242deg);
+            }
+            60% {
+                transform: rotate(-216deg);
+            }
+            50% {
+                transform: rotate(-180deg);
+            }
+            40% {
+                transform: rotate(-144deg);
+            }
+			30% {
+                transform: rotate(-108deg);
+            }
+			20% {
+                transform: rotate(-72deg);
+            }
+			10% {
+                transform: rotate(-36deg);
+            }
+			0% {
+                transform: rotate(-0deg);
+            }
+        }
+@keyframes rotate-c9 {
+            0% {
+                transform: rotate(-360deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            90% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }/*
+@keyframes rotate-c10 {
+            0% {
+                transform: rotate(-360deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(0deg);
+            }
+            90% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+@keyframes rotate-c11 {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            30% {
+                transform: rotate(0deg);
+            }
+            60% {
+                transform: rotate(120deg);
+            }
+            80% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }*/
+        }
+
+    </style>
+    
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <!-- BETTER ON FULL SCREEN -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="container-ring beginAnim">
+                /*<svg class="ringMain" viewBox="0 0 100 100" type="image/svg+xml" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="4" class="c1"></circle>
+                    <circle cx="50" cy="50" r="5" class="c2"></circle>
+                    <circle cx="50" cy="50" r="7" class="c3 c3-1-red"></circle>
+                    <circle cx="50" cy="50" r="8.5" class="c3 c3-2"></circle>
+                    <circle cx="50" cy="50" r="10" class="c3 c3-3"></circle>
+                    <circle cx="50" cy="50" r="27" class="c4"></circle>
+                    <circle cx="50" cy="50" r="28" class="c5"></circle>
+                    <circle cx="50" cy="50" r="29" class="c6"></circle>
+                    <circle cx="50" cy="50" r="43" class="c7"></circle>
+                    <circle cx="50" cy="50" r="45" class="c8"></circle>
+                    <circle cx="50" cy="50" r="46" class="c9"></circle>
+                    <circle cx="50" cy="50" r="48" class="c10"></circle>
+                    <circle cx="50" cy="50" r="49" class="c11"></circle>
+                </svg>*/
+                <div class="cpu">
+                    <p>
+                        Eixo
+                    </p>
+                    <p>
+                        0%
+                    </p>
+                </div>
+                <div class="rotate-skew">
+                    <div class="skew-square">
+                        <div class="square-1"></div>
+                        <div class="square-2"></div>
+                        <div class="square-3"></div>
+                        <div class="square-4"></div>
+                        <div class="square-5"></div>
+                        <div class="square-6"></div>
+                        <div class="square-7"></div>
+                        <div class="square-8"></div>
+                        <div class="square-9"></div>
+                        <div class="square-10"></div>
+                        <div class="square-11"></div>
+                        <div class="square-12"></div>
+                        <div class="square-13"></div>
+                        <div class="square-14"></div>
+                        <div class="square-15"></div>
+                        <div class="square-16"></div>
+                        <div class="square-17"></div>
+                        <div class="square-18"></div>
+                    </div>
+                </div>
+
+                <div class="rectangle">
+                    <div class="rectangle-2"></div>
+                    <div class="rectangle-3"></div>
+                    <div class="rectangle-4"></div>
+                    <div class="rectangle-5"></div>
+                    <div class="rectangle-6"></div>
+                    <div class="rectangle-7"></div>
+                    <div class="rectangle-8"></div>
+                    <div class="rectangle-9"></div>
+                    <div class="rectangle-10"></div>
+                    <div class="rectangle-11"></div>
+                    <div class="rectangle-12"></div>
+                    <div class="rectangle-13"></div>
+                    <div class="rectangle-14"></div>
+                    <div class="rectangle-15"></div>
+                    <div class="rectangle-16"></div>
+                    <div class="rectangle-17"></div>
+                    <div class="rectangle-18"></div>
+                    <div class="rectangle-19"></div>
+                    <div class="rectangle-20"></div>
+                    <div class="rectangle-21"></div>
+                    <div class="rectangle-22"></div>
+                    <div class="rectangle-23"></div>
+                    <div class="rectangle-24"></div>-->
+                </div>
+                <div class="symbol">
+                    <div class="symbol-1">
+                        <p>
+                            M
+                        </p>
+                    </div>
+                    <div class="symbol-2">
+                        <p>
+                            A
+                        </p>
+                    </div>
+                    <div class="symbol-3">
+                        <p>
+                            C
+                        </p>
+                    </div>
+                    <div class="symbol-4">
+                        <p>
+                            >
+                        </p>
+                    </div>
+                    <div class="symbol-5">
+                        <p>
+                            P
+                        </p>
+                    </div>
+                    <div class="symbol-6">
+                        <p>
+                            C
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="interface">
+                <div class="interface-1">
+                    <p>
+                        3D
+                    </p>
+                </div>
+                <div class="interface-2">
+                    <p>
+                        ROTOR
+                    </p>
+                </div>
+                <div class="interface-3">
+                    <p>
+                        EXPLORAR
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!-- partial -->
+  <script>
+      
+    //BETTER ON FULL SCREEN
+
+    // MAIN ELEMENT
+    const containerElements = [...document.querySelectorAll('.container *')]
+    const ringMain = containerElements.find(item =>item.classList.contains('ringMain'))
+    const rectangleAll = containerElements.find(item =>item.classList.contains('rectangle'))
+    const skewAll = containerElements.find(item =>item.classList.contains('rotate-skew'))
+    const symbolAll = containerElements.find(item =>item.classList.contains('symbol'))
+    const cpuNumber = containerElements.find(item =>item.classList.contains('cpu'))
+
+    // CICLES
+    const cElements = [...document.querySelectorAll('.ringMain *')]
+    const c1 = cElements.find(item =>item.classList.contains('c1'))
+    const c2 = cElements.find(item =>item.classList.contains('c2'))
+    const c3 = cElements.find(item =>item.classList.contains('c3'))
+    const c4 = cElements.find(item =>item.classList.contains('c4'))
+    const c5 = cElements.find(item =>item.classList.contains('c5'))
+    const c6 = cElements.find(item =>item.classList.contains('c6'))
+    const c7 = cElements.find(item =>item.classList.contains('c7'))
+    const c8 = cElements.find(item =>item.classList.contains('c8'))
+    const c9 = cElements.find(item =>item.classList.contains('c9'))
+    const c10 = cElements.find(item =>item.classList.contains('c10'))
+    const c11 = cElements.find(item =>item.classList.contains('c11'))
+
+    // BUTTONS
+    const button3D = document.querySelector('.interface-1')
+    const buttonBoost = document.querySelector('.interface-2')
+    const buttonInspect = document.querySelector('.interface-3')
+
+    // OTHERS
+    const skewElements = [...document.querySelectorAll('.skew-square *')]
+    const symbolElements = [...document.querySelectorAll('.symbol *')]
+    const cpuElement = document.querySelector('.cpu :nth-child(2)')
+    const containerRing = document.querySelector('.container-ring')
+
+    // REMOVE BEGIN SCALE
+    setTimeout(() => {
+        containerRing.classList.remove('beginAnim')
+    }, 80);
+
+    // CHANGE NUMBER AND CPU
+    let numberPercent = 0
+    const changeSymbolCPU = () =>
+    {
+        /*const symboleArray = ["Q",
+            "W",
+            "E",
+            "R",
+            "T",
+            "Y",
+            "U",
+            "I",
+            "O",
+            "P",
+            "A",
+            "S",
+            "D",
+            "F",
+            "G",
+            "H",
+            "J",
+            "K",
+            "L",
+            "Z",
+            "X",
+            "C",
+            "V",
+            "B",
+            "N",
+            "M"]*/
+        const randomUn = Math.floor(Math.random()*(2));
+
+        symbolElements.forEach((element) =>
+            {
+                // element.innerHTML = symboleArray[randomNumber]
+                element.innerHTML = randomUn
+
+            })
+        numberPercent++
+        if (numberPercent >= 100) {
+            cpuElement.innerHTML = '100'
+        } else {
+            cpuElement.innerHTML = numberPercent
+        }
+    }
+    window.setInterval(changeSymbolCPU, 100)
+    changeSymbolCPU()
+
+
+    // BUTTONS
+
+    //BUTTONS 3D
+    button3D.addEventListener('click', () => {
+        containerRing.classList.toggle('rotate-container-ring')
+        skewAll.classList.toggle('skew-square-3d')
+        rectangleAll.classList.toggle('rectangle-3d')
+        symbolAll.classList.toggle('symbol-3d')
+        cpuNumber.classList.toggle('cpu-3d')
+    })
+
+    //BUTTONS BOOST
+    buttonBoost.addEventListener('click', () => {
+        skewElements.forEach((element) =>
+            {
+                element.classList.toggle('skew-square-boost')
+            })
+        skewAll.classList.toggle('skew-square-scale')
+    })
+
+    //BUTTONS INSPECT
+    buttonInspect.addEventListener('click', () => {
+    containerRing.classList.toggle('animation-container-ring')
+
+    })
+
+
+  </script>
+</body>
+</html>
