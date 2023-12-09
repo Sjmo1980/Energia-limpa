@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Loading Middle Spin</title>
+  
+<style>
+
+
+@keyframes loading-r {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3600deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-3600deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+body {
+  background: black;
+}
+
+.loading-r {
+  background-color: transparent;
+  border-radius: 100%;
+  margin: 5px auto;
+  animation: loading-r 1s infinite linear;
+}
+
+
+    @keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+body {
+  background: black;
+}
+
+.loading {
+  background-color: transparent;
+  border-radius: 50%;
+  margin: 5px auto;
+  animation: loading 5s infinite linear;
+}
+
+.spin-1 {
+  border: 15px solid #aaaaaa;
+  border-top: 15px solid transparent;
+  border-left: 15px solid transparent;
+  width: 120px;
+  height: 120px;
+}
+
+.spin-2 {
+  border: 5px solid #05bbc3;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 100px;
+  height: 100px;
+  animation-delay: 1s;
+}
+
+.spin-3 {
+  border: 5px solid #d2d947;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 80px;
+  height: 80px;
+  animation-delay: 1s;
+}
+
+.spin-4 {
+  border: 5px solid #f2a342;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 60px;
+  height: 60px;
+  animation-delay: 1s;
+}
+
+.spin-5 {
+  border: 5px solid #f34d51;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 40px;
+  height: 40px;
+  animation-delay: 1s;
+}
+
+.spin-6 {
+  border: 5px solid #fff;
+  width: 20px;
+  height: 20px;
+  animation-delay: 1s;
+}
+
+
+
+
+    @keyframes loading-1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-180deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+body {
+  background: black;
+}
+
+.loading-1 {
+  background-color: transparent;
+  border-radius: 50%;
+  margin: 5px auto;
+  animation: loading-1 5s infinite linear;
+}
+
+.spin-10 {
+  border: 15px solid #aaaaaa;
+  border-top: 15px solid transparent;
+  border-left: 15px solid transparent;
+  width: 120px;
+  height: 120px;
+}
+
+.spin-20 {
+  border: 5px solid #05bbc3;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 100px;
+  height: 100px;
+  animation-delay: 1s;
+}
+
+.spin-30 {
+  border: 5px solid #d2d947;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 80px;
+  height: 80px;
+  animation-delay: 1s;
+}
+
+.spin-40 {
+  border: 5px solid #f2a342;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 60px;
+  height: 60px;
+  animation-delay: 1s;
+}
+
+.spin-50 {
+  border: 5px solid #f34d51;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 40px;
+  height: 40px;
+  animation-delay: 1s;
+}
+
+.spin-60 {
+  border: 5px solid #fff;
+  width: 20px;
+  height: 20px;
+  animation-delay: 1s;
+}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ol,ul {
+    list-style: none
+}
+
+blockquote,q {
+    quotes: none
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+</style>
+<script src="prefixfree.min.js"></script>
+    <!-- partial -->
+    <script src='jquery-2.2.4.min.js'></script>
+</head>
+<body>
+<!-- o qie hira ,e o div -->
+
+<div class='loading spin-1'>
+  <div class='loading-1 spin-20'>
+    <div class='loading-r spin-3'>
+      <div class='loading-r spin-4'>
+        <div class='loading-r spin-50'>
+          <div class='loading spin-6'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+ 
+</body> 
+  <script>
+        $(".vpop").on('click', function(e) {
+            e.preventDefault();
+            $("#video-popup-overlay,#video-popup-iframe-container,#video-popup-container,#video-popup-close").show();
+
+            var srchref = '', autoplay = '', id = $(this).data('id');
+            if ($(this).data('type') == 'vimeo') var srchref = "";
+
+
+            if ($(this).data('autoplay') == true) autoplay = '?autoplay=1';
+
+            $("#video-popup-iframe").attr('src', srchref+id+autoplay);
+
+            $("#video-popup-iframe").on('load', function() {
+                $("#video-popup-container").show();
+            });
+        });
+
+        $("#video-popup-close, #video-popup-overlay").on('click', function(e) {
+            $("#video-popup-iframe-container,#video-popup-container,#video-popup-close,#video-popup-overlay").hide();
+            $("#video-popup-iframe").attr('src', '');
+        });
+
+
+
+    </script>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Angular Gears</title>
+  <style>
+      /* Styles go here */
+/* I would like to thank the original author of these gears */
+/* you saved me so much time by creating a template I could use. */
+
+
+body {
+  background: #ffffff;
+  position: relative;
+  height: 100%;
+  margin: 0px;
+}
+
+@-webkit-keyframes clockwise {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes clockwise {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes counter-clockwise {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+@-moz-keyframes counter-clockwise {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+.gearbox{
+  background: #888;
+  height: 200px;
+  width: 330px;
+  position: relative;
+  margin: 75px auto;
+  border: none;
+  overflow: hidden;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+}
+
+.gear {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+}
+.gear:after {
+  content: "";
+  position: absolute;
+  height: 48px;
+  width: 48px;
+  -moz-border-radius: 64px;
+  -webkit-border-radius: 48px;
+  border-radius: 48px;
+  background: #333333;
+  top: 50%;
+  left: 50%;
+  margin-left: -24px;
+  margin-top: -24px;
+  z-index: 3;
+  
+}
+.gear.small {
+  height: 40px;
+  width: 40px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.gear.small:after {
+  height: 24px;
+  width: 24px;
+  -moz-border-radius: 48px;
+  -webkit-border-radius: 48px;
+  border-radius: 12px;
+  margin-left: -12px;
+  margin-top: -12px;
+}
+
+.gear.large {
+  height: 160px;
+  width: 160px;
+  -moz-border-radius: 80px;
+  -webkit-border-radius: 80px;
+  border-radius: 80px;
+}
+.gear.large:after {
+  height: 120px;
+  width: 120px;
+  -moz-border-radius: 48px;
+  -webkit-border-radius: 48px;
+  border-radius: 60px;
+  margin-left: -60px;
+  margin-top: -60px;
+}
+.gear.small {
+  top: 78px;
+  left: 33px;
+}
+.gear.medium {
+  top: 105px;
+  left: 61px;
+}
+.gear.large {
+  top: 16px;
+  left: 140px;
+}
+
+.gear-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #555555;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -moz-border-radius: 60px;
+  -webkit-border-radius: 60px;
+  border-radius: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.small .gear-inner {
+  -moz-border-radis: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+}
+.large .gear-inner {
+  -moz-border-radius: 80px;
+  -webkit-border-radius: 80px;
+  border-radius: 80px;
+}
+.animate_small {
+  -webkit-animation: counter-clockwise 1.5s infinite linear;
+  -moz-animation: counter-clockwise 1.5s infinite linear;
+}
+.animate_medium {
+  -webkit-animation: clockwise 3s infinite linear;
+  -moz-animation: clockwise 3s infinite linear;
+}
+.animate_large {
+  -webkit-animation: counter-clockwise 6s infinite linear;
+  -moz-animation: counter-clockwise 6s infinite linear;
+}
+.gear-inner .bar {
+  background: #555555;
+  height: 16px;
+  width: 96px;
+  position: absolute;
+  left: 50%;
+  margin-left: -48px;
+  top: 50%;
+  margin-top: -8px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.small .gear-inner .bar {
+  margin-left: -27px;
+  width: 54px;
+}
+.large .gear-inner .bar {
+  margin-left: -89px;
+  width: 178px;
+}
+.gear-inner .bar:nth-child(2) {
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.gear-inner .bar:nth-child(3) {
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.gear-inner .bar:nth-child(4) {
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.gear-inner .bar:nth-child(5) {
+  -moz-transform: rotate(67.5deg);
+  -ms-transform: rotate(67.5deg);
+  -webkit-transform: rotate(67.5deg);
+  transform: rotate(67.5deg);
+}
+.gear-inner .bar:nth-child(6) {
+  -moz-transform: rotate(112.5deg);
+  -ms-transform: rotate(112.5deg);
+  -webkit-transform: rotate(112.5deg);
+  transform: rotate(112.5deg);
+}
+.gear-inner .bar:nth-child(7) {
+  -moz-transform: rotate(157.5deg);
+  -ms-transform: rotate(157.5deg);
+  -webkit-transform: rotate(157.5deg);
+  transform: rotate(157.5deg);
+}
+.gear-inner .bar:nth-child(8) {
+  -moz-transform: rotate(22.5deg);
+  -ms-transform: rotate(22.5deg);
+  -webkit-transform: rotate(22.5deg);
+  transform: rotate(22.5deg);
+}
+
+.butts{
+  height: 50px;
+  width: 113px;
+  position: relative;
+  margin: -50px auto;
+}
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html ng-app="Gears">
+  <head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js" type="text/javascript"></script>
+  </head>
+<body ng-controller="MainController">
+  <div class='gearbox' >
+    <div ng-repeat="n in sizes" class="gear {{n.style}}">
+      <div class="gear-inner {{n.style}}" ng-class="{animate_{{n.style}}: flag}">
+        <div class="bar" ng-repeat="n in n.size" ></div>
+      </div>
+    </div>
+  </div>
+  <div class="butts">
+    <button type="button" class="btn btn-success" ng-disabled="flag == true" ng-click="start()">Iniciar</button>
+    <button type="button" class="btn btn-danger" ng-disabled="flag == false" ng-click="stop()">Parar</button>
+  </div>
+</body>
+</html>
+<!-- partial -->
+  <script>
+      function createNumTeeth() {
+    var small = 4;
+    var medium = 8;
+    var large = 16;
+    var sizes = { 
+        0: {
+            style: 'small', 
+            size: [] 
+        }, 
+        1: {
+            style: 'medium', 
+            size: [] 
+        }, 
+        2: {
+            style: 'large', 
+            size: [] 
+        }
+    };
+    for(var i = 0; i < small / 2; i++) sizes[0].size.push(i);
+    for(var i = 0; i < medium / 2; i++) sizes[1].size.push(i);
+    for(var i = 0; i < large / 2; i++) sizes[2].size.push(i);
+    return sizes;
+}
+
+var app = angular.module('Gears',[]);
+
+app.controller("MainController", function($scope){
+    $scope.flag = true;
+    $scope.sizes = createNumTeeth();
+    
+    $scope.start = function(){
+       $scope.flag = !($scope.flag);
+    }
+    
+    $scope.stop = function(){
+       $scope.flag = !($scope.flag);
+    }
+});
+  </script>
+
+</body>
+</html>
