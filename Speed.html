@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Filling the Gaps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      svg {
+  height: 80vmin;
+  width: 80vmin;
+}
+circle:nth-of-type(n + 2) {
+  fill: none;
+  stroke-width: 3px;
+  stroke: hsl(var(--hue, 343), 90%, 55%);
+  -webkit-clip-path: var(--path, none);
+  clip-path: var(--path, none);
+  transform-origin: 50% 50%;
+  
+  --path: polygon(
+    -10% 50%,
+    110% 50%,
+    100% 0%,
+    0% 100%,
+    50% 110%,
+    50% 50%,
+    0% 0%
+  );
+}
+circle:nth-of-type(2) {
+  transform: rotate(180deg);
+}
+circle:nth-of-type(3) {
+  --hue: 183;
+}
+circle:nth-of-type(4) {
+  --hue: 143;
+  transform: rotate(270deg);
+}
+circle:nth-of-type(5) {
+  --hue: 43;
+  transform: rotate(315deg)
+}
+
+line {
+  stroke: var(--bg);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: .5em;
+  background: var(--bg);
+  z-index: 1;
+}
+label {
+  margin: 0em .667em;
+}
+
+main {
+  transform: rotateX(var(--rotate, 0deg))
+}
+body {
+  perspective: 100vmin;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --bg: #fafcff;
+  background: var(--bg)
+}
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<main>
+  <svg viewBox="0 0 100 100">
+  <circle r="50" cx="50" cy="50" />
+  <circle r="42" cx="50" cy="50" />
+  <circle r="34" cx="50" cy="50" />
+  <circle r="26" cx="50" cy="50" />
+  <circle r="18" cx="50" cy="50" />
+  <line x1="0" y1="0" x2="100" y2="100" />
+  <line x1="100" y1="0" x2="0" y2="100" />
+  <line x1="0" y1="50" x2="100" y2="50" />
+  <line x1="50" y1="0" x2="50" y2="100" />
+</svg>
+</main>
+
+<form>
+  <label for="rate">Spin Speed</label>
+  <input id="rate" type="range" min="0" max="1" step=".01" value="0" />
+  <label for="rotate">RotateX</label>
+  <input id="rotate" type="range" min="-88" max="88" step="2" value="0" />
+</form>
+<!-- partial -->
+  <script>
+      const spinner = document.querySelector('svg');
+const control = document.querySelector('#rate');
+const rotation = document.querySelector('#rotate');
+const spinning = spinner.animate({
+  transform: ['rotate(0)', 'rotate(1turn)']
+}, {
+  duration: 266.6667,
+  iterations: Infinity
+});
+spinning.playbackRate = control.value;
+
+control.addEventListener('input', e => {
+  const value = parseFloat(e.currentTarget.value);
+  console.log(value)
+  if (spinning.updatePlaybackRate) {
+    spinning.updatePlaybackRate(value);
+  } else {
+    spinning.playbackRate = value;
+  }
+});
+
+rotation.addEventListener('input', e => {
+  document.body.style.setProperty('--rotate', `${rotation.value}deg`)
+})
+  </script>
+
+</body>
+</html>
