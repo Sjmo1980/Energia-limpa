@@ -10,6 +10,5 @@ Vejo as coisa funcionando, e quando essa me atrai, quero entender como funciona 
 Talvez o que passa pela minha cabeça, não seja algo de uma pessoa normal, é tentando me entender na parte psicológica, talvez tenha algum grau de autismo leve talvez. 
 Bom, mas isso não me traz algo ruim. 
 
-Transição de energia elétrica. 
-
+Transição de energética. 
 https://www.alemdaenergia.engie.com.br/transicao-energetica-muito-alem-da-energia/
