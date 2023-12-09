@@ -12,3 +12,5 @@ Bom, mas isso não me traz algo ruim.
 
 Transição de energética. 
 https://www.alemdaenergia.engie.com.br/transicao-energetica-muito-alem-da-energia/
+
+Transição energética consiste em passar de uma matriz de fonte de energia que utiliza combustíveis fósseis, como Petróleo, gás natural e carvão, que são grandes emissores de Carbono (CO2) na atmosfera, para fontes renováveis, como sol, água, vento e biomassa, que emitem menos gases de efeito estufa.
