@@ -69,7 +69,7 @@ categoryAxis.renderer.labels.template.disabled = true;
 
 var valueAxis = radarChart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.renderer.minGridDistance = 10;
-valueAxis.renderer.grid.template.strokeOpacity = 0.05;
+valueAxis.renderer.grid.template.strokeOpacity = 10.05;
 valueAxis.renderer.labels.template.disabled = true;
 valueAxis.renderer.axisAngle = radarChart.startAngle;
 valueAxis.min = 0;
@@ -82,7 +82,7 @@ radarSeries.dataFields.categoryX = "category";
 radarSeries.columns.template.tooltipText = "{categoryX}";
 radarSeries.dataFields.valueY = "value";
 radarSeries.columns.template.radarColumn.cornerRadius = 4;
-radarSeries.columns.template.radarColumn.innerCornerRadius = 0;
+radarSeries.columns.template.radarColumn.innerCornerRadius = 1;
 radarSeries.columns.template.strokeOpacity = 0;
 radarSeries.defaultState.transitionDuration = 2000;
 radarSeries.sequencedInterpolation = true;
@@ -97,7 +97,7 @@ radarChart.events.on("ready", bend);
 
 function bend() {
     var animation = radarChart.animate([{ property: "startAngle", to: 90 }, { property: "endAngle", to: 450 }], 8000, am4core.ease.cubicIn).delay(8000);
-   animation.events.on("animationended", unbend);
+   //animation.events.on("animationended", unbend);
    
 }
 
