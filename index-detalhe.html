@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Pie Chart with Lines  (variant)</title>
+  <style>
+      /* Farbige Flächen der Torte */
+[class^="pie"] 
+{
+  stroke-width: 58;
+  fill: none;
+  -webkit-transition: all ease 450ms;
+  transition: all ease 450ms;
+}
+
+[class^="pie"]:hover /* Vergrößerung der farbigen Flächen der Torte bei Mouseover*/
+{
+  stroke-width: 70;
+  border-radius: 4px;
+}
+
+[class^="line-"] /* Animationen der Linien. Linien erscheinen nacheinander*/
+{
+  stroke-width: 1;
+  stroke: #0a0a0a;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all ease 450ms 1500ms;
+  transition: all ease 450ms 1500ms;
+}
+[class^="line-"].line-1 {
+  -webkit-transition-delay: 800ms;
+          transition-delay: 800ms;
+}
+[class^="line-"].line-2 {
+  -webkit-transition-delay: 850ms;
+          transition-delay: 850ms;
+}
+[class^="line-"].line-3 {
+  -webkit-transition-delay: 900ms;
+          transition-delay: 900ms;
+}
+[class^="line-"].line-4 {
+  -webkit-transition-delay: 950ms;
+          transition-delay: 950ms;
+}
+[class^="line-"].line-5 {
+  -webkit-transition-delay: 1000ms;
+          transition-delay: 1000ms;
+}
+[class^="line-"].line-6 {
+  -webkit-transition-delay: 1050ms;
+          transition-delay: 1050ms;
+}
+[class^="line-"].line-7 {
+  -webkit-transition-delay: 1100ms;
+          transition-delay: 1100ms;
+}
+[class^="line-"].line-8 {
+  -webkit-transition-delay: 1150ms;
+          transition-delay: 1150ms;
+}
+[class^="line-"].line-9 {
+  -webkit-transition-delay: 1200ms;
+          transition-delay: 1200ms;
+}
+[class^="line-"].line-10 {
+  -webkit-transition-delay: 1250ms;
+          transition-delay: 1250ms;
+}
+[class^="line-"].line-11 {
+  -webkit-transition-delay: 1300ms;
+          transition-delay: 1300ms;
+}
+[class^="line-"].line-12 {
+  -webkit-transition-delay: 1350ms;
+          transition-delay: 1350ms;
+}
+[class^="line-"].line-13 {
+  -webkit-transition-delay: 1400ms;
+          transition-delay: 1400ms;
+}
+[class^="line-"].line-14 {
+  -webkit-transition-delay: 1450ms;
+          transition-delay: 1450ms;
+}
+[class^="line-"].line-15 {
+  -webkit-transition-delay: 1500ms;
+          transition-delay: 1500ms;
+}
+[class^="line-"].line-16 {
+  -webkit-transition-delay: 1550ms;
+          transition-delay: 1550ms;
+}
+
+
+
+[class^="text-"] /* Animationen der Texte (Prozentzahlen und Beschriftung). Elemente erscheinen nacheinander*/
+{
+  font-family: "Gotham", "Gotham A", "Gotham B", sans-serif;
+  opacity: 0;
+  -webkit-transition: opacity ease 1450ms;
+  transition: opacity ease 1450ms;
+}
+[class^="text-"].text-1 {
+  -webkit-transition-delay: 800ms;
+          transition-delay: 800ms;
+}
+[class^="text-"].text-2 {
+  -webkit-transition-delay: 850ms;
+          transition-delay: 850ms;
+}
+[class^="text-"].text-3 {
+  -webkit-transition-delay: 900ms;
+          transition-delay: 900ms;
+}
+[class^="text-"].text-4 {
+  -webkit-transition-delay: 950ms;
+          transition-delay: 950ms;
+}
+[class^="text-"].text-5 {
+  -webkit-transition-delay: 1000ms;
+          transition-delay: 1000ms;
+}
+[class^="text-"].text-6 {
+  -webkit-transition-delay: 1050ms;
+          transition-delay: 1050ms;
+}
+[class^="text-"].text-7 {
+  -webkit-transition-delay: 1100ms;
+          transition-delay: 1100ms;
+}
+[class^="text-"].text-8 {
+  -webkit-transition-delay: 1150ms;
+          transition-delay: 1150ms;
+}
+
+[class^="text-"].text-9 {
+  -webkit-transition-delay: 1200ms;
+          transition-delay: 1200ms;
+}
+[class^="text-"].text-10 {
+  -webkit-transition-delay: 1250ms;
+          transition-delay: 1250ms;
+}
+[class^="text-"].text-11 {
+  -webkit-transition-delay: 1300ms;
+          transition-delay: 1300ms;
+}
+[class^="text-"].text-12 {
+  -webkit-transition-delay: 1350ms;
+          transition-delay: 1350ms;
+}
+[class^="text-"].text-13 {
+  -webkit-transition-delay: 1400ms;
+          transition-delay: 1400ms;
+}
+[class^="text-"].text-14 {
+  -webkit-transition-delay: 1450ms;
+          transition-delay: 1450ms;
+}
+[class^="text-"].text-15 {
+  -webkit-transition-delay: 1500ms;
+          transition-delay: 1500ms;
+}
+[class^="text-"].text-16 {
+  -webkit-transition-delay: 1550ms;
+          transition-delay: 1550ms;
+}
+
+.outline /* Weißer Kreis */
+{
+  stroke-width: 68;
+  stroke: #fff;
+  fill: none;
+  opacity: 0;
+  -webkit-transition: all ease 450ms 1000ms;
+  transition: all ease 450ms 1000ms;
+}
+
+/*Einzelne Tortenstücke, insg. 16. stroke-dashoffset = Angabe der Drehung im Kreis. */
+.pie-1  {
+  stroke-dasharray: 0 628.32; /*Randlinie und Anzeige der Fläche beim Einblenden */
+  stroke-dashoffset: 388; /*Abstand des dasharray Musters*/
+  stroke: #01D86A;  /*Farbwert  */
+  -webkit-transition-delay: 25ms;  /* Einblenden */
+          transition-delay: 25ms;
+}
+
+.pie-2 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 488;
+  stroke: #AD538C;
+  -webkit-transition-delay: 25ms;
+          transition-delay: 25ms;
+}
+
+
+.pie-3 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 491;
+  stroke: #FFB700;
+  -webkit-transition-delay: 50ms;
+          transition-delay: 50ms;
+}
+.pie-4 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 532;
+  stroke: #057CD7;
+  -webkit-transition-delay: 50ms;
+          transition-delay: 50ms;
+}
+.pie-5 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 575;
+  stroke: #4B7256;
+  -webkit-transition-delay: 75ms;
+          transition-delay: 75ms;
+}
+.pie-6 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 555;
+  stroke: #6274B0;
+  -webkit-transition-delay: 75ms;
+          transition-delay: 75ms;
+}
+.pie-7 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 611;
+  stroke: #F25A38;
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+}
+.pie-8 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 638;
+  stroke: #BC96BC;
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+}
+.pie-9 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 659;
+  stroke: #FF5975;
+  -webkit-transition-delay: 125ms;
+          transition-delay: 125ms;
+}
+.pie-10 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 687;
+  stroke: #43B8B0;
+  -webkit-transition-delay: 125ms;
+          transition-delay: 125ms;
+}
+.pie-11 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 710;
+  stroke: #AD84FA;
+  -webkit-transition-delay: 150ms;
+          transition-delay: 150ms;
+}
+.pie-12 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 733;
+  stroke: #6EBF17;
+  -webkit-transition-delay: 150ms;
+          transition-delay: 150ms;
+}
+.pie-13 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 726;
+  stroke: #67A69B;
+  -webkit-transition-delay: 200ms;
+          transition-delay: 200ms;
+}
+.pie-14 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 729;
+  stroke: #FF927F;
+  -webkit-transition-delay: 200ms;
+          transition-delay: 200ms;
+}
+.pie-15 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 784;
+  stroke: #A89C8A;
+  -webkit-transition-delay: 250ms;
+          transition-delay: 250ms;
+}
+.pie-16 {
+  stroke-dasharray: 0 628.32;
+  stroke-dashoffset: 776;
+  stroke: #FF4858;
+  -webkit-transition-delay: 250ms;
+          transition-delay: 250ms;
+}
+
+/* Formatierung der Prozentzahlen*/
+.text-head  {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Formatierung der Beschriftungen z.b: Wissenschaftliche Bibliothek  */
+.text-lbl  {
+  font-size: 11px;
+}
+
+/* Deckkraft */
+.animated [class^="data"],
+.animated [class^="line-"],
+.animated [class^="text-"],
+.animated .outline {
+  opacity: 1;
+}
+
+/* Skalierung der Linien, verschiedene Browser */
+.animated [class^="line-"] {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+       transform: scale(1);
+}
+
+/*Sichtbare farbige Flächen, Größe der Flächen */
+.animated .pie-1 {
+  stroke-dasharray: 134 628.32;
+}
+.animated .pie-2 {
+  stroke-dasharray: 117 628.32;
+}
+.animated .pie-3 {
+  stroke-dasharray: 60 628.32;
+}
+.animated .pie-4 {
+  stroke-dasharray: 51 628.32;
+}
+.animated .pie-5 {
+  stroke-dasharray: 47 628.32;
+}
+.animated .pie-6 {
+  stroke-dasharray: 14 628.32;
+}
+.animated .pie-7 {
+  stroke-dasharray: 35 628.32;
+}
+.animated .pie-8 {
+  stroke-dasharray: 31 628.32;
+}
+.animated .pie-9 {
+  stroke-dasharray: 26 628.32;
+}
+.animated .pie-10 {
+  stroke-dasharray: 23 628.32;
+}
+.animated .pie-11 {
+  stroke-dasharray: 23 628.32;
+}
+.animated .pie-12 {
+  stroke-dasharray: 23 628.32;
+}
+.animated .pie-13 {
+  stroke-dasharray: 13 628.32;
+}
+.animated .pie-14 {
+  stroke-dasharray: 10 628.32;
+}
+.animated .pie-15 {
+  stroke-dasharray: 25 628.32;
+}
+.animated .pie-16 {
+  stroke-dasharray: 14 628.32;
+}
+
+
+/*Hintergrundfarbe */
+body {
+  background: lightgray;
+  
+}
+/*Kontainer für Tortendiagramm */
+#wrap {
+  position: absolute;
+  top: 250px;
+  left: 300px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 500px;
+  height: 450px;
+}
+/* Formatierung für h1 Überschriften  */
+h1 {
+  position: relative;
+  font-size: 1.3em;
+  top: 10%;
+  left: 10%;
+  right: 0;
+  font-weight: bold;
+  color: #3d3d3d;
+  font-family: 'Lucida Sans', Arial;
+}
+
+/* Formatierung für den Button "Animation"*/
+.button {
+    background-color: white;
+    border: 2px solid #555555;
+    color: black;
+    padding: 7px 23px;
+    text-align: center;
+    text-decoration: none
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0% 10%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+/*Formatierung für Button "Animation" bei Mouseover"*/
+.button:hover {
+    background-color: #555555;
+    color: white;
+}
+/*Formatierung für Box mit Angaben über mich */
+.info{
+  font-size: 10px;
+  font-family: 'Lucida Sans', Arial;
+}
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<title>Funktionale Animation - Informationsmanager auf dem Arbeitsmarkt</title>
+<link rel="stylesheet" href="css/style.css">
+  <!-- Kreisdiagramm erstellt nach Pie Chart von Joshua Dorenkamp, https://codepen.io/JoshuaDoshua/details/zrXOdV -->
+  <!-- Button "Animation" erstellt nach Css3 Button von w3schools, https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_hover --><!-- Erstellt von Frieda Josi -->
+</head>
+
+<body>
+
+  <div id="wrap" class=""> 
+
+
+  <button id="toggle" class="button">Atualizar</button>
+
+   <svg viewbox="0 0 650 450">
+       
+    <circle class="outline" r="100" cx="210" cy="200" />
+   
+    <circle class="pie-1" r="100" cx="210" cy="200" />
+    <line class="line-1" x1="165" y1="100" x2="144" y2="65" />
+    <text class="text-1 text-head" x="110" y="40">20,5%</text>
+    <text class="text-1 text-lbl" x="100" y="55">Biblioteca científica</text>
+    
+    <circle class="pie-2" r="100" cx="210" cy="200" />
+    <line class="line-2" x1="115" y1="180" x2="75" y2="155" />
+    <text class="text-2 text-head" x="10" y="100">17,9%</text>
+    <text class="text-2 text-lbl" x="0" y="115">Werbeagentur,</text>
+    <text class="text-2 text-lbl" x="0" y="130">PR, Marketing,</text>
+    <text class="text-2 text-lbl" x="0" y="145">desenvolvimento web</text>
+    
+    <circle class="pie-3" r="100" cx="210" cy="200" />
+    <line class="line-3" x1="130" y1="280" x2="80" y2="308" />
+    <text class="text-3 text-head" x="40" y="305">9%</text>
+    <text class="text-3 text-lbl" x="30" y="320">Onlinehandel,</text>
+    <text class="text-3 text-lbl" x="30" y="335">Comércio eletrônico</text>
+    
+    <circle class="pie-4" r="100" cx="210" cy="200" />
+    <line class="line-5" x1="190" y1="305" x2="180" y2="355" />
+    <text class="text-4 text-head" x="140" y="375">7,7%</text>
+    <text class="text-4 text-lbl" x="130" y="390">Telecomunicação,</text>
+    <text class="text-4 text-lbl" x="130" y="405">Software</text>
+    
+    <circle class="pie-5" r="100" cx="210" cy="200" />
+    <line class="line-4" x1="240" y1="305" x2="260" y2="350" />
+    <text class="text-5 text-head" x="250" y="370">7,1%</text>
+    <text class="text-5 text-lbl" x="240" y="385">Autoridade, associação</text>
+    
+    <circle class="pie-6" r="100" cx="210" cy="200" />
+    <line class="line-6" x1="275" y1="290" x2="310" y2="335" />
+    <text class="text-6 text-head" x="320" y="345">5,8%</text>
+    <text class="text-6 text-lbl" x="310" y="360">Consultoria de gestão, consultoria</text>
+    
+    <circle class="pie-7" r="100" cx="210" cy="200" />
+    <line class="line-7" x1="295" y1="270" x2="345" y2="305" />
+    <text class="text-7 text-head" x="350" y="310">5,1%</text>
+    <text class="text-7 text-lbl" x="395" y="310">Imprensa, editora, livraria</text>
+    
+    <circle class="pie-8" r="100" cx="210" cy="200" />
+    <line class="line-8" x1="315" y1="240" x2="365" y2="255" />
+    <text class="text-8 text-head" x="375" y="270">4,5%</text>
+    <text class="text-8 text-lbl" x="420" y="270">Indústria automotiva e fornecedores</text>
+    
+    <circle class="pie-9" r="100" cx="210" cy="200" />
+    <line class="line-9" x1="325" y1="215" x2="370" y2="220" />
+    <text class="text-9 text-head" x="380" y="225">3,8%</text>
+    <text class="text-9 text-lbl" x="425" y="225">Öffentliche Bibliothek</text>
+    
+    <circle class="pie-10" r="100" cx="210" cy="200" />
+    <line class="line-10" x1="325" y1="193" x2="375" y2="185" />
+    <text class="text-10 text-head" x="380" y="190">3,2%</text>
+    <text class="text-10 text-lbl" x="425" y="185">Forschung, Lehre,</text>
+    <text class="text-10 text-lbl" x="425" y="200">Wissenschaft, Bildung</text>
+    
+    <circle class="pie-11" r="100" cx="210" cy="200" />
+    <line class="line-11" x1="320" y1="170" x2="375" y2="155" />
+    <text class="text-11 text-head" x="380" y="160">3,2%</text>
+    <text class="text-11 text-lbl" x="425" y="160">Finanzdienstleister, Versicherung</text>
+    
+    <circle class="pie-12" r="100" cx="210" cy="200" />
+    <line class="line-12" x1="310" y1="147" x2="365" y2="125" />
+    <text class="text-12 text-head" x="370" y="134">3,2%</text>
+    <text class="text-12 text-lbl" x="415" y="134">Rundfunkanstalt</text> 
+    
+    <circle class="pie-13" r="100" cx="210" cy="200" />
+    <line class="line-13" x1="300" y1="130" x2="360" y2="100" />
+    <text class="text-13 text-head" x="365" y="110">1,9%</text>
+    <text class="text-13 text-lbl" x="410" y="110">Groß-+ Einzelhandel</text>
+    
+    <circle class="pie-14" r="100" cx="210" cy="200" />
+    <line class="line-14" x1="295" y1="118" x2="335" y2="90" />
+    <text class="text-14 text-head" x="340" y="86">1,3%</text>
+    <text class="text-14 text-lbl" x="385" y="86">Fachinformationseinrichtungen, DB-Anbieter </text> 
+    
+    <circle class="pie-15" r="100" cx="210" cy="200" />
+    <line class="line-15" x1="280" y1="110" x2="310" y2="70" />
+    <text class="text-15 text-head" x="315" y="65">3,8%</text>
+    <text class="text-15 text-lbl" x="360" y="65">Sonstige Industrie</text>
+    
+    <circle class="pie-16" r="100" cx="210" cy="200" />
+    <line class="line-16" x1="260" y1="95" x2="280" y2="55" />
+    <text class="text-16 text-head" x="280" y="40">1,9%</text>
+    <text class="text-16 text-lbl" x="325" y="40">Sonstige Branche</text>
+    
+    <circle id="helper" style="display:none;" r="110" cy="200" cx="205" stroke-width="1" stroke="blue" fill="none" />
+    <circle id="helper" style="display:none;" r="150" cy="200" cx="205" stroke-width="1" stroke="blue" fill="none" />
+    </svg>
+  <!--
+  <infobox class="info">Erstellt von Frieda Josi, Studiengang Master Informations- und Wissensmanagement, Matrikel Nr. 1378361, Mai 2017<br/>
+  Download Tutorial:  <a href="Tutorial_Infografik_Josi.pdf">Tutorial Funktionale Animation</a>  </infobox>-->
+  
+  </div>
+
+  
+  
+
+<!--Ein-Ausblendeeffekt  -->
+    <script src="js/index.js"></script> 
+
+</body>
+<!-- partial -->
+  <script>
+      var btn = document.getElementById('toggle'); /* Button aus Zeile 14 index.html */
+var wrap = document.getElementById('wrap'); /* Kontainer für die Tortengrafik */
+btn.addEventListener('click', function(e) /* Ereignisobjekt für Button "Animation" und einem einfachen Klick darauf.*/
+{ 
+  wrap.className = ""; /*Ausblenden der Tortengrafik, bei Klick auf Button "Animation" */
+  setTimeout(function() {
+    wrap.className = "animated";
+  },3000);
+});
+setTimeout(function()  /*Einblenden der Tortengrafik, beim Laden der Datei und als zweites Ereignis nach dem Klick auf Button "Animation" */
+{
+  wrap.className = "animated";
+},1000);
+  </script>
+
+</body>
+</html>
