@@ -1,325 +1,178 @@
 <!DOCTYPE html>
-<html lang="en" > 
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Play YouTube or Vimeo Video in Modal - Bootstrap 4</title>
-  <script src="web/bootstrapcreative.js?v=7"></script>
-  <link rel='stylesheet' href='web/bootstrap-4-latest.min.css'>
-  <link rel="style></web/style">
-
-</head>
-
-
-<head>
-    <head>
-  <script type="text/javascript">
-    if(location.protocol === 'http:' && document.domain === 'muazkhan.com') {
-      location.href = location.href.replace('http:', 'https:');
-    }
-  </script>
-  <meta charset="utf-8">
-  <title>Demo</title>
-  <link rel="canonical" href="/demos/">
-  <meta name="google-site-verification" content="zhJ273gZGLJ_Cbl-muzPYYTR6jD7sCCgufDIRS5h4SE" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="shortcut icon" href="wall-e.jpeg">
-  <link rel="stylesheet" href="web/stylesheet.css">
-  <script src="web/menu.js"></script>
-  <style>
-  .search-container {
-    text-align: left;
-    margin: -2em 5%;
-    margin-top: 0;
-  }
-
-  .search-container input {
-    background-color: transparent;
-  }
-
-  .search-container td {
-    border: 0;
-    vertical-align: top;
-    padding: 0;
-    border-top: none;
-    border-right: none;
-  }
-
-  .table-style {
-    border-collapse: collapse;
-    border-spacing: 0px;
-    margin-top: 0px;
-    margin-bottom: 16px;
-    display: block;
-    overflow: auto;
-    word-break: normal;
-    color: rgb(51, 51, 51);
-    font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
-    font-size: 16px;
-    line-height: 25.6000003814697px;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-
-  .tr-style {
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: rgb(204, 204, 204);
-    background-color: rgb(248, 248, 248);
-  }
-
-  .td-style {
-    padding: 6px 13px;
-    border: 1px solid rgb(221, 221, 221);
-  }
-
-  .td-style2 {
-    color: rgb(65, 131, 196);
-    text-decoration: none;
-    background: transparent;
-  }
-
-  .github-button {
-    color: #24292e!important;
-    font-size: 11px!important;
-    font-weight: 600!important;
-  }
-
-  .table-style {
-    min-width: 60%!important;
-    display: table!important;
-    text-align: left!important;
-  }
-
-  .table-style-container {}
-  </style>
-</head>
- <header>
-    <a class="logo" href="/"><img src="assets/gifis/10.gif" alt="Energia limpa"></a>
-    <a href="/" class="menu-explorer">Menu<img src="menu-icon.png" alt="Menu"></a>
-    <nav>
-      <li>
-        <a href="home.html">Principal</a>
-      </li>
-      <li>
-        <a href="Torque.html">Demonstação</a>
-      </li>
-      <li>
-        <a href="index.html">Apresentação</a>
-      </li>
-      <li>
-        <a href="https://">FAQ</a>
-      </li>
-      <li>
-        <a href="https://">YouTube</a>
-      </li>
-      <li>
-        <a href="https://">--</a>
-      </li>
-      <li>
-        <a href="https://github.com/Sjmo1980/Energia-limpa.git">Github</a>
-      </li>
-    </nav>
-  </header>
-  <meta charset="UTF-8">
-  <title>3D</title>
-  <style>
-      /*
-
-Full-page view:
-
-*/
-
-
-:root {
-	font-size: 10px;
-	--border-color: rgb(0, 143, 238);
-}
-
-* {
-	box-sizing: border-box;
-}
-
-body {
-	font-family: "Montserrat", Arial, sans-serif;
-	font-weight: 500;
-	line-height: 1.5;
-	text-align: center;
-	min-height: 100vh;
-	padding: 4rem 2rem;
-	color: #fafafa;
-	background-color: #080808;
-}
-
-h1 {
-	font-size: 4rem;
-	color: #0097fb;
-}
-h2 {
-	font-size: 2rem;
-	margin-bottom: 2.5rem;
-	color: #169af1;
-}
-.cube-container {
-	position: relative;
-	width: 30rem;
-	height: 30rem;
-	margin: 5rem auto 6rem;
-	perspective: 100rem;
-}
-
-.cube {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	transform-style: preserve-3d;
-	transition: transform 1s cubic-bezier(0.32, 0.05, 0.35, 1.6);
-}
-
-.cube-face-image {
-	display: block;
-	position: absolute;
-	box-shadow: 0 0 0.5rem #fff, 
-				0 0 1.5rem var(--border-color),
-				0 0 3rem var(--border-color);
-}
-
-.image-buttons {
-	display: grid;
-	grid-template-columns: repeat(3, auto);
-	grid-gap: 1.5rem;
-	justify-content: center;
-}
-
-.image-buttons input {
-	border: 0.2rem solid #fafafa;
-}
-
-.image-buttons input:focus {
-	outline: none;
-	border: 0.2rem solid var(--border-color);
-}
-
-/* Transform images to create cube */
-
-.image-1 {
-	transform: translateZ(15rem);
-}
-
-.image-2 {
-	transform: rotateX(-180deg) translateZ(15rem);
-}
-
-.image-3 {
-	transform: rotateY(90deg) translateZ(15rem);
-}
-
-.image-4 {
-	transform: rotateY(-90deg) translateZ(15rem);
-}
-
-.image-5 {
-	transform: rotateX(90deg) translateZ(15rem);
-}
-
-.image-6 {
-	transform: rotateX(-90deg) translateZ(15rem);
-}
-
-/* Transform cube to show correct image */
-
-.cube.initial-position {
-	transform: translateZ(-15rem) translateY(-2rem) rotateX(-15deg) rotateY(18deg) rotateZ(2deg);
-}
-
-.cube.show-image-1 {
-	transform: translateZ(-15rem);
-}
-
-.cube.show-image-2 {
-	transform: translateZ(-15rem) rotateX(180deg);
-}
-
-.cube.show-image-3 {
-	transform: translateZ(-15rem) rotateY(-90deg);
-}
-
-.cube.show-image-4 {
-	transform: translateZ(-15rem) rotateY(90deg);
-}
-
-.cube.show-image-5 {
-	transform: translateZ(-15rem) rotateX(-90deg);
-}
-
-.cube.show-image-6 {
-	transform: translateZ(-15rem) rotateX(90deg);
-}
-  </style>
+  <title>Demonstração</title>
+  <link rel='stylesheet' href='web/bootstrap.css'>
+<link rel='stylesheet' href='web/mdb.min.css'>
+<link rel='stylesheet' href='web/font-awesome.css'>
+  <link rel="stylesheet" href="./web/style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<a href="multi-mp4.html"><h1>Exibição</h1>
+<header>
 
-	<div class="cube-container" width="600" head="600">
-	
-		<div class="cube initial-position">
-	
-			<img class="cube-face-image image-1" src="assets/gifis/chave.gif" width="100%" height="100%">
-			
-			<img class="cube-face-image image-2" src="assets/gifis/festo.gif" width="100%" height="100%">
-			
-			<img class="cube-face-image image-3" src="assets/gifis/catraca1.gif" width="100%" height="100%">
-			
-			<img class="cube-face-image image-4" src="assets/gifis/pend.gif" width="100%" height="100%">
-			
-			<img class="cube-face-image image-5" src="assets/gifis/pl.gif" width="100%" height="100%">
-			
-			<img class="cube-face-image image-6" src="assets/gifis/synchronous-motor_03a.gif" width="100%" height="100%">
-	
-		</div>
-	
-	</div>
-	
-	<h2>Física aplicada</h2></a>
-	
-	<div class="image-buttons">
-	
-		<input type="image" class="show-image-1" src="assets/gifis/chave.gif" width="100%" height="100%"></input>
-	
-		<input type="image" class="show-image-2" src="assets/gifis/festo.gif" width="100%" height="100%"></input>
-	
-		<input type="image" class="show-image-3" src="assets/gifis/catraca1.gif" width="100%" height="100%"></input>
-	
-		<input type="image" class="show-image-4" src="assets/gifis/pend.gif" width="100%" height="100%"></input>
-	
-		<input type="image" class="show-image-5" src="assets/gifis/pl.gif" width="100%" height="100%"></input>
-	
-		<input type="image" class="show-image-6" src="assets/gifis/synchronous-motor_03a.gif" width="100%" height="100%"></input>
-	
-	</div>
+  <!--Navbar-->
+  <nav class="navbar navbar-toggleable-md navbar-dark">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">Menu</span></span>
+                </button>
+      <a class="navbar-brand" href="#">
+        <strong>Desenvolvimento tecnológico</strong>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav1">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link">Principal<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Leis da física aplicadas</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link">Pricing</a>
+          </li>
+          
+          <li class="nav-item dropdown btn-group">
+            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More info</a>
+            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+              <a class="dropdown-item">Contact</a>
+              <a class="dropdown-item">Billing adress</a>
+              <a class="dropdown-item">Discounts</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline waves-effect waves-light">
+          <input class="form-control" type="text" placeholder="Search">
+        </form>-->
+      </div>
+    </div>
+  </nav>
+  <!--/.Navbar-->
+
+</header>
+
+<main>
+
+  <!--Main layout-->
+  <div class="container">
+    <div class="row">
+
+      <!--Sidebar-->
+      <div class="col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+
+        <div class="widget-wrapper">
+          <h4>:</h4>
+          <br>
+          <div class="list-group">
+            <a href="index.html" class="list-group-item active">1 Princípios da física aplicado</a></a>
+         
+            <a href="SChart.html" class="list-group-item">3 Simulação do rendimento</a>
+         <!--   <a href="index4" class="list-group-item">4 Aplicação mecânica</a>
+            <a href="index5.html" class="list-group-item ">--</a>
+            <a href="index6.html" class="list-group-item">--</a>
+            <a href="imdex7" class="list-group-item">--</a>
+            <a href="imdex8" class="list-group-item">--</a>
+            <a href="index9" class="list-group-item">--</a>-->
+          </div>
+        </div>
+      <!--Main column-->
+      <div class="col-lg-8">
+
+        <!--First row-->
+        <div class="row wow fadeIn" data-wow-delay="0.4s">
+          <div class="col-lg-12">
+            <div class="divider-new">
+              <h2 class="h2-responsive">Breve demonstração</h2>
+            </div>
+
+
+            <!--Carousel Wrapper-->
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+              <!--Indicators-->
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+              </ol>
+              <!--/.Indicators-->
+              <!--Slides-->
+              <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                  <img src="assets/gifis/chave.gif" alt="First slide" width="100%" height="500">
+                  <div class="carousel-caption">
+                    <h4>Força binária</h4>
+                    <br>
+                  </div>
+                </div>
+                <!--/First slide-->
+                <!--Second slide-->
+                <div class="carousel-item">
+                  <img src="assets/gifis/festo.gif" alt="Second slide" width="100%" height="500">
+                  <div class="carousel-caption">
+                    <h4>Força hidráulica</h4>
+                    <br>
+                  </div>
+                </div>
+                <!--/Second slide-->
+                <!--Third slide-->
+                <div class="carousel-item">
+                  <img src="assets/gifis/pl.gif" alt="Third slide" width="100%" height="500">
+                  <div class="carousel-caption">
+                    <h4>Energia cinética</h4>
+                    <br>
+                  </div>
+                </div>
+                <!--/Third slide-->
+              </div>
+              <!--/.Slides-->
+              <!--Controls-->
+              <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          <br><br><br>
+              <!--/.Controls-->
+              <h4>Binário é a ação de duas forças de mesma intensidade, direção e sentidos opostos aplicados em diferentes pontos. Mesmo sofrendo a ação de duas forças, o binário tende a produzir apenas uma rotação.</h4>
+                  <br><br><br>
+              <h4>
+                  Pneumática é a ciência que trata do comportamento dos gases e seu emprego para a transmissão de energia. Todos os gases são facilmente compressíveis, e é esta a propriedade que mais os diferencia dos líquidos como meio de transmissão de energia.
+              </h4>
+                  <br><br><br>
+              <h4>
+                  Energia cinética é o tipo de energia que está relacionado ao movimento. Todo corpo que se move está dotado de energia cinética, que é uma grandeza escalar medida em joules. Na montanha russa, ganha-se energia cinética na medida em que a força peso realiza trabalho.
+              </h4>
+            </div>
+            <!--/.Carousel Wrapper-->
+          </div>
+        </div>
+        <!--/.First row-->
+        <br>
+        <hr class="extra-margins">
+
+        <!--Second row-->
+        <div class="row">
+          <!--First columnn-->
+          <div class="col-lg-4">
+            <!--Card-->
+            <div class="card  wow fadeIn" data-wow-delay="0.2s">
+
+        
+</main>
+
+</footer>
+<!--/.Footer-->
 <!-- partial -->
-  <script>
-      window.addEventListener("DOMContentLoaded",	() => {
-	
-	const cube = document.querySelector(".cube"),
-		  imageButtons = document.querySelector(".image-buttons");
-	let cubeImageClass = cube.classList[1];
-
-	imageButtons.addEventListener("click", e => {
-		
-		const targetNode = e.target.nodeName,
-			  targetClass = e.target.className;
-
-			if (targetNode === "INPUT" && targetClass !== cubeImageClass) {
-			
-			console.log(`Show Image: ${targetClass.charAt(11)}`);
-			cube.classList.replace(cubeImageClass, targetClass);
-	    	cubeImageClass = targetClass;		
-		}
-	});	
-});
-  </script>
+  <script src='web/jquery-3.2.1.min.js'></script>
+<script src='web/bootstrap.js'></script>
+<script src='web/mdb.min.js'></script>
+<script  src="./web/script.js"></script>
 
 </body>
 </html>
