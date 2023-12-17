@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="br" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Try different steps()</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<style>
+      :root {
+  --duration: 2000ms;
+  --step-count: 2000;
+}
+.stepper {
+  background: hsl(15, 100%, 50%);
+  animation: none var(--duration) infinite var(--direction, alternate-reverse ) var(--easing, steps(var(--step-count), jump-start));
+}
+.rotate {
+  width: .2rem;
+  height: 2rem;
+  animation-name: spin;
+}
+.translate {
+  width: 2rem;
+  height: 2rem;
+  animation-name: move-right;
+}
+.background,
+.opacity {
+  width: 8rem;
+  height: 2rem;
+  animation-name: color;
+}
+.opacity {
+  animation-name: opacity;
+}
+
+section {
+  height: 6rem;
+  position: relative;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) translateY(-2rem);
+  }
+  100% {
+    transform: rotate(360deg) translateY(-2rem);
+  }
+}
+@keyframes move-right {
+  0% {
+    transform: translateX(-10rem);
+  }
+  100% {
+    transform: translateX(10rem);
+  }
+}
+@keyframes color {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.marker {
+  opacity: .6;
+  animation: none;
+  position: absolute;
+  top: 0;
+  background: none;
+  border: 2px dashed hsl(255, 50%, 50%);
+}
+.marker.start.translate {
+  transform: translateX(-10rem);
+}
+.marker.end.translate {
+  transform: translateX(10rem);
+}
+.marker.start.rotate {
+  transform: rotate(0deg) translateY(-2rem);
+}
+
+
+body {
+  min-height: 100vh;
+  padding: 6rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: var(--fonts);
+  --fonts: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #51515c;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+aside {
+  height: 1.2rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 3px double hsla(0,0%,70%,.5)
+}
+aside::after {
+  content: '';
+  position: absolute;
+  top: .2rem;
+  right: 0;
+  bottom: .1rem;
+  left: 0;
+  background: hsl(163, 100%, 40%);
+  animation: progress var(--duration) 0ms infinite linear;
+  opacity: .6;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+}
+
+@keyframes progress {
+  100% {
+    transform: scaleX(1);
+  }
+}
+form {
+  width: 100%;
+  max-width: 26em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em 1em;
+  gap: 2em 1em;
+}
+form p {
+  display: flex;
+  flex-direction: column-reverse;
+}
+form label {
+  margin-bottom: .5em;
+}
+select, input {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+  
+	display: block;
+  width: 100%;
+	font-size: 16px;
+	font-weight: 500;
+	color: currentColor;
+	line-height: 1.3;
+	padding: .6em .4em .5em .4em;
+	border: 1px solid #ccd;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .25em;
+	background-color: #fff;
+	background-image: var(--top-background, none),
+	  linear-gradient(to bottom, #ffffff 0%, #f5f5ff 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}
+[disabled],
+[disabled] + label {
+  opacity: .6;
+}
+select {
+  font-family: var(--fonts);
+  width: 100%;
+  padding-right: 1.6em;
+  --top-background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23667CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+}
+select::-ms-expand {
+	display: none;
+}
+select:hover,
+input:hover {
+	border-color: #778;
+}
+select:focus,
+input:focus {
+	border-color: #ccd;
+	box-shadow: 0 0 1px 3px hsla(163, 100%, 40%, .6);
+	//box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222; 
+	outline: none;
+}
+select option {
+	font-weight: normal;
+}
+
+#rule {
+  margin: 3rem;
+  font-family: monospace;
+  font-size: 1.6em;
+  line-height: 1.4;
+  width: 100%;
+  max-width: 26rem;
+}
+
+footer {
+  line-height: 1.4;
+  width: 100%;
+  max-width: 26rem;
+}
+footer code {
+  font-size: 1.2em;
+}
+
+#jump-none,
+#jump-both,
+#jump-end,
+#jump-start {
+  display: none;
+}
+
+@supports (animation-timing-function: steps(2, jump-both)) {
+  #jump-both {
+    display: initial;
+  }
+  footer {
+    display: none;
+  }
+}
+
+@supports (animation-timing-function: steps(2, jump-none)) {
+  #jump-none {
+    display: initial;
+  }
+  footer {
+    display: none;
+  }
+}
+
+@supports (animation-timing-function: steps(2, jump-start)) {
+  #jump-start {
+    display: initial;
+  }
+  #start {
+    display: none;
+  }
+}
+
+@supports (animation-timing-function: steps(2, jump-end)) {
+  #jump-end {
+    display: initial;
+  }
+  #end {
+    display: none;
+  }
+}
+  </style>
+<title></title>
+</head>
+<body>
+<!-- partial:index.partial.html --
+<section>
+  <div class="stepper rotate"></div>
+  <div class="stepper marker rotate start end"></div>
+</section>
+<section>
+  <div class="stepper translate"></div>
+  <div class="stepper marker translate start"></div>
+  <div class="stepper marker translate end"></div>
+</section>
+<section>
+  <div class="stepper opacity"></div>
+</section>
+<section>
+  <div class="stepper background"></div>
+</section>
+<aside></aside>
+<!--
+<form>
+  <p>
+    <select id="easing">
+      <option value="linear">linear</option> 
+      <option value="ease-in">suavisa o inicio</option> 
+      <option value="ease-out">suavisa o final</option> 
+      <option value="ease-in-out">suavisa geral</option> 
+      <option id="start" value="steps(var(--step-count), start)">passos no inicio</option> 
+      <option id="end" value="steps(var(--step-count), end)">passos no final</option> 
+      <option id="jump-start" value="steps(var(--step-count), jump-start)" selected>passos de pulo no inicio</option> 
+      <option id="jump-end" value="steps(var(--step-count), jump-end)">passo: pula-fim</option> 
+      <option id="jump-none" value="steps(var(--step-count), jump-none)">passo: pila-desligado</option> 
+      <option id="jump-both" value="steps(var(--step-count), jump-both)">passo: pula-ambos</option> 
+    </select>
+    <label for="easing">Suavisar</label>
+  </p>
+  <p>
+    <input id="step-count" type="number" step="1" value="8" min="1" max="20" />
+    <label for="step-count">Contagem de passo</label>
+  </p>
+  <p>
+    <input type="number" value="4000" id="duration" />
+    <label for="duration">Duração (ms)</label>
+  </p>
+ <p>
+    <select id="direction">
+      <option value="normal">normal</option> 
+     <option value="alternate">alternar</option> 
+      <option value="reverse">Força inversa</option> 
+      <option value="alternate-reverse">Força nas duas direções</option> 
+    </select>
+    <label for="direction">Controle linear</label>
+  </p>
+  
+</form>
+<p id="rule"></p> 
+<footer>Este navegador ainda não suporta o mais recente<code>steps()</code> options: <code>jump-start</code>, <code>jump-end</code>, <code>jump-both</code>, and <code>jump-none</code>. Para ver as novas opções de flexibilização em ação, experimente o Firefox 65+.</footer>
+<!-- partial --
+  <script>
+      const options = document.querySelectorAll('input, select');
+const progress = document.querySelector('aside');
+const stepper = document.querySelector('.stepper');
+const docStyle = document.documentElement.style;
+
+const rule = document.getElementById('rule');
+const stepCount = document.getElementById('step-count');
+const duration = document.getElementById('duration');
+const easing = document.getElementById('easing');
+const direction = document.getElementById('direction');
+
+setGuides(parseInt(stepCount.value, 10));
+updateRule(true);
+
+options.forEach(el => {
+  el.addEventListener('change', e => {
+    let value = e.currentTarget.value;
+    if (e.currentTarget.id === 'duration') {
+      value = value + 'ms';
+    }
+    if (e.currentTarget.id === 'step-count') {
+      setGuides(value);
+    }
+    if (e.currentTarget.id === 'easing') {
+      if (value.includes('steps')) {
+        stepCount.removeAttribute('disabled')
+      } else {
+        stepCount.setAttribute('disabled', 'disabled')
+      }
+    }
+    docStyle.setProperty(`--${e.currentTarget.id}`, value);
+    updateRule();
+  });
+});
+
+function setGuides(count) {
+  let images = [];
+  for (let i = 0; i < count; ++i) {
+    images.push(`linear-gradient(
+      to right,
+      hsla(0,0%,70%,0) ${i / count * 100}%,
+      hsla(0,0%,70%,.5) ${i / count * 100}%,
+      hsla(0,0%,70%,.5) calc(${i / count * 100}% + 2px),
+      hsla(0,0%,70%,0) calc(${i / count * 100}% + 2px))`)
+  }
+  progress.style.background = images.join(',');
+}
+
+function updateRule(initial) {
+  const s = window.getComputedStyle(stepper);
+  rule.textContent = `animatção: movimento ${s.animationDuration} infinito ${s.animationDirection} ${s.animationTimingFunction.replace(' ','')}`;
+  if (initial && s.animationTimingFunction === 'ease') {
+    document.getElementById('start').setAttribute('selected','selected');
+    docStyle.setProperty('--easing', document.getElementById('start').value);
+  }
+}
+  </script>-->
+  <div class="carousel-item">
+                  <img src="assets/gifis/rascunho.gif" alt="Second slide" width="100%" height="300">
+                  <div class="carousel-caption">
+                    <h4>Simulação</h4>
+                    <br>
+                  </div>
+                </div>
+      <div class="carousel-item">
+                  <img src="img/hyd.jpg" alt="Second slide" width="100%" height="100%">
+                  <div class="carousel-caption">
+                    <h4>Rascunho</h4>
+                    <br>
+                  </div>
+                </div>
+</body>
+</html>
